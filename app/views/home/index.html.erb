@@ -1,0 +1,94 @@
+<h1>Performace Chart</h1>
+
+<div id="chart" >
+  <svg style="height: 500px;"></svg>
+</div>
+
+<script type="text/javascript">
+
+  $.ajax({
+    url: "/graph_data",
+    success: function(data){
+      console.log(data);
+      plotGraph(data);
+    }
+  });
+
+  function redraw() {
+    d3.select('#chart svg')
+      .datum(data)
+      .transition().duration(500)
+      .call(chart);
+  }
+
+  function plotGraph(data){
+
+    var chart;
+
+    nv.addGraph(function() {
+      chart = nv.models.lineChart()
+      .options({
+        margin: {left: 100, bottom: 100},
+        x: function(d,i) {
+          console.log(d );
+          return i
+        },
+        showXAxis: true,
+        showYAxis: true,
+        transitionDuration: 250
+      });
+
+      // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
+      tickValues = ["FA1", "FA2", "SA1"];
+      chart.xAxis
+        .axisLabel("Tests")
+        .tickValues(tickValues)
+        // .staggerLabels(true)
+        .tickFormat(function (val, i) { return tickValues[i] });
+
+      chart.yAxis
+        .axisLabel('Percentage (%)')
+        .tickFormat(d3.format(',.2f'))
+        ;
+
+      d3.select('#chart svg')
+        .datum(data)
+        .call(chart);
+
+      //TODO: Figure out a good way to do this automatically
+      nv.utils.windowResize(chart.update);
+      //nv.utils.windowResize(function() { d3.select('#chart1 svg').call(chart) });
+
+      chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+      return chart;
+    });
+  }
+
+  // function sinAndCos() {
+  //   var sin = [];
+  //   var cos = [];
+
+  //   sin.push({x: 33, y: 33 });
+  //   sin.push({x: 61, y: 61 });
+  //   sin.push({x: 54, y: 54 });
+
+  //   cos.push({x: 23, y: 23 });
+  //   cos.push({x: 51, y: 51 });
+  //   cos.push({x: 89, y: 89 });
+
+  //   return [
+  //     {
+  //       values: sin,
+  //       key: "9A",
+  //       color: "#ff7f0e"
+  //     },
+  //     {
+  //       values: cos,
+  //       key: "9B",
+  //       color: "#333333"
+  //     }
+  //   ];
+  // }
+
+</script>
