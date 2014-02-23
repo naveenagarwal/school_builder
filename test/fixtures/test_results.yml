@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  marks_in_percentage: MyString
+  class_id: 1
+  student_id: 1
+
+two:
+  marks_in_percentage: MyString
+  class_id: 1
+  student_id: 1
