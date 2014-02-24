@@ -89,7 +89,7 @@ end
 # FA1, class 9B
 puts "# FA1, class 9B"
 [59, 49, 70, 77, 47, 78, 77, 43, 48, 43].each_with_index do |percentage, index|
-  student = group9a.students.where(name: "student#{index + 1}").first
+  student = group9b.students.where(name: "student#{index + 11}").first
 
   fa1.test_results.create!(
       marks_in_percentage: percentage,
@@ -102,7 +102,7 @@ end
 # FA2, class 9B
 puts "# FA2, class 9B"
 [58, 44, 73, 32, 40, 87, 39, 44, 87, 79].each_with_index do |percentage, index|
-  student = group9a.students.where(name: "student#{index + 1}").first
+  student = group9b.students.where(name: "student#{index + 11}").first
 
   fa2.test_results.create!(
       marks_in_percentage: percentage,
@@ -115,7 +115,7 @@ end
 # SA1, class 9B
 puts "# SA1, class 9B"
 [90, 73, 30, 34, 35, 81, 83, 35, 81, 45].each_with_index do |percentage, index|
-  student = group9a.students.where(name: "student#{index + 1}").first
+  student = group9b.students.where(name: "student#{index + 11}").first
 
   sa1.test_results.create!(
       marks_in_percentage: percentage,

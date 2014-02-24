@@ -35,4 +35,4 @@ end
 gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem "therubyracer"
-gem "nvd3-rails", :git => "https://github.com/adeven/nvd3-rails.git", :submodules => true
+# gem "nvd3-rails", :git => "https://github.com/adeven/nvd3-rails.git", :submodules => true

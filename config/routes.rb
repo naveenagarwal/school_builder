@@ -6,6 +6,7 @@ SchoolBuilder::Application.routes.draw do
   root 'home#index'
 
   get "graph_data" => "home#graph_data"
+  post "graph_data" => "home#graph_data"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

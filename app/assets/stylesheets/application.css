@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.align-button {
+  margin-left: 9px;
+  margin-top: -11px;
+}
