@@ -1,12 +1,14 @@
-$(document).ready(function() {
+$(document).ready(loadChart);
+$(document).on('page:load', loadChart);
 
+function loadChart(){
   $.ajax({
     url: "/graph_data",
     success: function(data){
       plotGraph(data);
     }
   });
-});
+}
 
 var plotGraph = function (data){
 
@@ -24,12 +26,12 @@ var plotGraph = function (data){
         transitionDuration: 250
       });
 
-      tickValues = ["FA1", "FA2", "SA1"];
+      // tickValues = ["FA1", "FA2", "SA1"];
       chart.xAxis
         .axisLabel("Tests")
-        .tickValues(tickValues)
+        // .tickValues(tickValues)
         // .staggerLabels(true)
-        .tickFormat(function (val, i) { return tickValues[i] });
+        // .tickFormat(function (val, i) { return tickValues[i] });
 
       chart.yAxis
         .axisLabel('Percentage (%)')
