@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SchoolBuilder app to show the performance of the test results using thr nvd3 graphs
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.1.0
 
-* System dependencies
+* Rails version 4.0.2
 
-* Configuration
+* Create a database.yml file in the app config dorectory (This app is developed using mysql)
 
-* Database creation
+* Run bundle install
 
-* Database initialization
+* Run rake db:create db:migrate db:seed
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Start the server and visit the localhost:3000
