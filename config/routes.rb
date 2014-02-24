@@ -5,8 +5,10 @@ SchoolBuilder::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get "graph_data" => "home#graph_data"
-  post "graph_data" => "home#graph_data"
+  resource :home, controller: :home, only: [] do
+    get 'graph_data'
+    post 'graph_data'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

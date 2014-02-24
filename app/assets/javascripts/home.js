@@ -3,7 +3,7 @@ $(document).on('page:load', loadChart);
 
 function loadChart(){
   $.ajax({
-    url: "/graph_data",
+    url: "home/graph_data",
     success: function(data){
       plotGraph(data);
     }
