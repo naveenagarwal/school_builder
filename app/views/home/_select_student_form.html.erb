@@ -4,10 +4,11 @@
   <% end %>
   <fieldset>
 
-    Select Student <%= select_tag(
+    <%= select_tag(
         "student",
         options_from_collection_for_select(@students, "id", "name"),
-        {class: "select"}
+        prompt: "Select Student",
+        class: "selectpicker"
       )
     %>
 

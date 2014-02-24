@@ -16,3 +16,11 @@
   margin-left: 9px;
   margin-top: -11px;
 }
+
+select {
+  font-family: Cursive;
+}
+
+#chart svg {
+  height: 500px;
+}

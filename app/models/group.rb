@@ -6,14 +6,16 @@ class Group < ActiveRecord::Base
   has_many :students
   has_many :test_results
 
+  ###############
+  # Class Methods
+  ###############
   class << self
 
     def performance_data_for_charting
       tests = Test.all
       groups = Group.all
 
-      data = []
-      average_marks = []
+      average_marks, data = [], []
 
       groups.each_with_index do |group, index|
         test = nil
@@ -32,17 +34,17 @@ class Group < ActiveRecord::Base
         }
 
         average_marks = []
-
       end
+
       data
     end
 
     def combine_performance_data_for(grade: nil)
       data = {
-        values: average_marks_for_groups(grade: grade),
-        color: COLORS["9AB"],
-        key: "9AB"
-      }
+          values: average_marks_for_groups(grade: grade),
+          color: COLORS["9AB"],
+          key: "9AB"
+        }
     end
 
     private
@@ -51,12 +53,12 @@ class Group < ActiveRecord::Base
       group_ids = where(grade: grade).pluck(:id)
       tests = Test.all
 
-      tests.map do |test|
-        {
-          x: test.name,
-          y: average_marks(test_id: test.id, group_ids: group_ids)
-        }
-      end.flatten
+      tests.map { |test|
+          {
+            x: test.name,
+            y: average_marks(test_id: test.id, group_ids: group_ids)
+          }
+        }.flatten
     end
 
     def average_marks(test_id: nil, group_ids: nil)
@@ -68,6 +70,9 @@ class Group < ActiveRecord::Base
 
   end
 
+  #############
+  # Public API
+  #############
 
   def test_result_average
     test_results.average("marks_in_percentage").to_f
